@@ -1,5 +1,7 @@
 public class App {
+    
     public static void main(String[] args) throws Exception {
+        System.out.println("--- Testing linked list ---");
         Node test = null;
         test = Node.listInsert(test, 5);
         test = Node.listInsert(test, 7);
@@ -15,89 +17,64 @@ public class App {
         if(result < 0){
             System.out.println("Did not find");
         } else {
-            System.out.println("found at ");
+            System.out.println("found at " + result);
         }
 
         System.out.println("searching for valid node 7");
-        result = test.listSearch(test, 7);
+        result = Node.listSearch(test, 7);
         if(result < 0){
             System.out.println("Did not find");
         } else {
             System.out.println("found at position: " + result);
         }
 
-        // deleteing node
+        // deleting node
         System.out.println("Before deleting...");
         print(test);
         System.out.println("After deleting...");
         test = Node.listDelete(test, 2);
         print(test);
         
+        // test palindrome
+        System.out.println("--- Testing palindrome ---");
+        Node pal = null;
+        pal = Node.listInsert(pal, 1);
+        pal = Node.listInsert(pal, 2);
+        pal = Node.listInsert(pal, 3);
+        pal = Node.listInsert(pal, 2);
+        pal = Node.listInsert(pal, 1);
 
-
-
-    }
-
-    public static class Node {
-        int key;
-        Node next;
-
-        public Node(int key){
-            this.key = key;
-            this.next = null;
+        // run palindrome function
+        System.out.print("Here is the list: ");
+        print(pal);
+        System.out.println("Checking for palindrome...");
+        // valid palindrome
+        boolean isPal = Palindrome.isPalindrome(pal);
+        if(isPal){
+            System.out.println("It is a palindrome");
+        } else {
+            System.out.println("Not a palindrome");
         }
+        
+        // invalid palindrome
+        Node invalidPal = null;
+        invalidPal = Node.listInsert(invalidPal, 1);
+        invalidPal = Node.listInsert(invalidPal, 4);
+        invalidPal = Node.listInsert(invalidPal, 5);
+        invalidPal = Node.listInsert(invalidPal, 7);
+        invalidPal = Node.listInsert(invalidPal, 10);
+        
+        System.out.print("Here is the list: ");
+        print(invalidPal);
+        System.out.println("Checking for palindrome...");
 
-        // inserting a node at the head, returns new head
-        static Node listInsert(Node head, int x){
-            Node newNode = new Node(x);
-            newNode.next = head;
-            return newNode;
+        isPal = Palindrome.isPalindrome(invalidPal);
+        if(isPal){
+            System.out.println("It is a palindrome");
+        } else {
+            System.out.println("Not a palindrome");
         }
-
-        // search for a node at key, returns value or null
-        static int listSearch(Node head, int key){
-            Node curr = head;
-            int pos = 1;
-
-            while(curr != null){
-                if(curr.key == key){
-                    return pos;
-                }
-                curr = curr.next;
-                pos++;
-            }
-
-            return -1; // not found
-
-
-        }
-
-        // delete x from the list and return head
-        static Node listDelete(Node head, int x){
-
-            // error bounds, empty or invalid
-            if(head == null || x <= 0){
-                return head;
-            }
-
-            // x is the head
-            if(x == 1){ 
-                return head.next;
-            }
-
-            Node prev = head;
-            for(int i = 1; i < x - 1 && prev.next != null; i++){
-                prev = prev.next;
-            }
-
-            // out of bounds
-            if(prev.next == null){
-                return head;
-            }
-
-            prev.next = prev.next.next;
-            return head;
-        }
+        
     }
 
     // to print out list
