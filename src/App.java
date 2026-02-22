@@ -75,6 +75,14 @@ public class App {
             System.out.println("Not a palindrome");
         }
         
+        // rainwater problem
+        System.out.println("--- Rainwater problem ---");
+        int [] elevationMap = {1, 2, 1, 4, 1, 2, 1, 5, 0, 0, 2, 1, 5};
+        int ans = Rainwater.trap(elevationMap);
+        
+        System.out.println("Answer: " + ans + " units");
+        
+        
     }
 
     // to print out list
