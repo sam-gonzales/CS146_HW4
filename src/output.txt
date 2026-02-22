@@ -1,0 +1,20 @@
+--- Testing linked list ---
+Original list
+10 -> 7 -> 5
+Searching for invalid node 1
+Did not find
+searching for valid node 7
+found at position: 2
+Before deleting...
+10 -> 7 -> 5
+After deleting...
+10 -> 5
+--- Testing palindrome ---
+Here is the list: 1 -> 2 -> 3 -> 2 -> 1
+Checking for palindrome...
+It is a palindrome
+Here is the list: 10 -> 7 -> 5 -> -> 4 -> 1
+Checking for palindrome...
+Not a palindrome
+--- Rainwater problem ---
+Answer: 26 units
